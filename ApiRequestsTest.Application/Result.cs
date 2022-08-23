@@ -37,17 +37,7 @@ public class Result
     {
         return new Result<T>(value, true, String.Empty);
     }
-
-    public static Result Combine(params Result[] results)
-    {
-        foreach (Result result in results)
-        {
-            if (result.Failure)
-                return result;
-        }
-
-        return Ok();
-    }
+    
 }
 
 

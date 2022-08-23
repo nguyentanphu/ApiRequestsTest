@@ -51,7 +51,7 @@ public class Api1PackageProvider: IPackageProvider
             response.EnsureSuccessStatusCode();
             var result = await response.Content.ReadAsStringAsync();
             var output = JsonSerializer.Deserialize<ApiPackageOutput>(result);
-            return Result.Ok(output.Amount);
+            return Result.Ok(output.Total);
         }
         catch (HttpRequestException e)
         {
@@ -61,6 +61,6 @@ public class Api1PackageProvider: IPackageProvider
 
     private class ApiPackageOutput
     {
-        public double Amount { get; set; }
+        public double Total { get; set; }
     }
 }
