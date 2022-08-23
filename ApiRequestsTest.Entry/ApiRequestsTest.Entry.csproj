@@ -22,4 +22,10 @@
       <ProjectReference Include="..\ApiRequestsTest.Application\ApiRequestsTest.Application.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Content Include="..\readme.md">
+        <Link>readme.md</Link>
+      </Content>
+    </ItemGroup>
+
 </Project>
