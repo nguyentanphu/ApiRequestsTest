@@ -4,5 +4,5 @@ namespace ApiRequestsTest.Application.Contract;
 
 public interface IPackageAggregator
 {
-    Task<Result<double>> SelectBestDeal(ConsignmentInput input);
+    Task<Result<double>> SelectBestPrice(ConsignmentInput input);
 }

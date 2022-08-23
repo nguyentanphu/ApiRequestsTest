@@ -1,19 +1,20 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using ApiRequestsTest.Application.Contract;
+using ApiRequestsTest.Domain;
+using Microsoft.Extensions.Configuration;
 
 namespace ApiRequestsTest.Application;
 
 public class Application
 {
-    private readonly IConfiguration _configuration;
+    private readonly IPackageAggregator _packageAggregator;
 
-    public Application(IConfiguration configuration)
+    public Application(IPackageAggregator packageAggregator)
     {
-        _configuration = configuration;
+        _packageAggregator = packageAggregator;
     }
 
-    public Result<double> GetBestDeal()
+    public Task<Result<double>> GetBestDeal(ConsignmentInput input)
     {
-        Console.WriteLine(_configuration["Urls:Api1"]);
-        return Result.Ok(4.555);
+        return _packageAggregator.SelectBestPrice(input);
     }
 }

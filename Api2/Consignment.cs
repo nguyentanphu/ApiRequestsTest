@@ -2,8 +2,8 @@
 
 public class Consignment
 {
+    public string Consignor { get; set; }
     public string Consignee { get; set; }
-    public string Consigner { get; set; }
     public Carton[] Cartons { get; set; }
 }
 

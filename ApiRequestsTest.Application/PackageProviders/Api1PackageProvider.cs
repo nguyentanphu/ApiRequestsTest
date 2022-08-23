@@ -13,10 +13,10 @@ public class Api1PackageProvider: IPackageProvider
     private readonly IConfiguration _configuration;
     private readonly HttpClient _httpClient;
 
-    public Api1PackageProvider(IConfiguration configuration, HttpClient httpClient)
+    public Api1PackageProvider(IConfiguration configuration, IHttpClientFactory clientFactory)
     {
         _configuration = configuration;
-        _httpClient = httpClient;
+        _httpClient = clientFactory.CreateClient(nameof(Api1PackageProvider));
     }
 
     public string GetAuthenticationCredential()
@@ -50,7 +50,10 @@ public class Api1PackageProvider: IPackageProvider
         {
             response.EnsureSuccessStatusCode();
             var result = await response.Content.ReadAsStringAsync();
-            var output = JsonSerializer.Deserialize<ApiPackageOutput>(result);
+            var output = JsonSerializer.Deserialize<ApiPackageOutput>(result, new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            });
             return Result.Ok(output.Total);
         }
         catch (HttpRequestException e)

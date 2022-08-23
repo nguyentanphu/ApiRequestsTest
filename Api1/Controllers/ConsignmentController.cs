@@ -11,12 +11,18 @@ public class ConsignmentController: ControllerBase
         Console.WriteLine($"Requesting ContactAddress: {consignment.ContactAddress}, WarehouseAddress: {consignment.WarehouseAddress}");
         
         var random = new Random();
-        var randomDelay = random.Next(1, 11);
-        // Random delay from 1-10 seconds
+        var randomDelay = random.Next(1, 6);
+        // 20% of returning 500
+        if (randomDelay == 5)
+        {
+            return StatusCode(500);
+        }
+        // Random delay from 1-5 seconds
         await Task.Delay(randomDelay * 1000);
+        
         return Ok(new
         {
-            Amount = random.NextDouble() * 100
+            Total = random.NextDouble() * 100
         });
     }
 }

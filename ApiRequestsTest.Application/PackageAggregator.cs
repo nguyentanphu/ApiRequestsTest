@@ -12,26 +12,27 @@ public class PackageAggregator: IPackageAggregator
         _packageProviders = packageProviders;
     }
 
-    public async Task<Result<double>> SelectBestDeal(ConsignmentInput input)
+    public async Task<Result<double>> SelectBestPrice(ConsignmentInput input)
     {
-        var tasks = _packageProviders.Select(p => ExecuteDeal(p, input));
+        var tasks = _packageProviders.Select(p => ExecuteRequest(p, input));
         var results = await Task.WhenAll(tasks);
         if (results.All(r => r.Failure))
         {
             return Result.Fail<double>("Getting deals all failed!");
         }
 
-        var minPrice = results.Where(r => r.Success)
-            .Min(r => r.Value);
-        return Result.Ok<double>(minPrice);
+        return results.Where(r => r.Success)
+            .OrderBy(r => r.Value)
+            .First();
     }
 
-    private async Task<Result<double>> ExecuteDeal(IPackageProvider packageProvider, ConsignmentInput input)
+    private async Task<Result<double>> ExecuteRequest(IPackageProvider packageProvider, ConsignmentInput input)
     {
         var token = packageProvider.GetAuthenticationCredential();
         var body = packageProvider.SerializeInput(input);
         try
         {
+            // Timeout the request if it takes more than 10 secs
             var result = await packageProvider.RequestDealWithRetry(token, body).WaitAsync(TimeSpan.FromSeconds(10));
             return result;
         }
