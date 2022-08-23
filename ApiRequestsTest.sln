@@ -14,6 +14,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiRequestsTest.Application
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiRequestsTest.Domain", "ApiRequestsTest.Domain\ApiRequestsTest.Domain.csproj", "{73E74C1F-C8D8-46E4-AC57-0CBFCA2737E6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{42EA380C-2315-4301-8DD0-F0872D33A8FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiRequestsTest.Application.Tests", "ApiRequestsTest.Application.Tests\ApiRequestsTest.Application.Tests.csproj", "{F6176BD0-C658-4780-8057-E476CF8F80E9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,10 +48,15 @@ Global
 		{73E74C1F-C8D8-46E4-AC57-0CBFCA2737E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73E74C1F-C8D8-46E4-AC57-0CBFCA2737E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{73E74C1F-C8D8-46E4-AC57-0CBFCA2737E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6176BD0-C658-4780-8057-E476CF8F80E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6176BD0-C658-4780-8057-E476CF8F80E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6176BD0-C658-4780-8057-E476CF8F80E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6176BD0-C658-4780-8057-E476CF8F80E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{E497F798-2A37-48B8-9A17-7BCFB958AA0A} = {40743BAE-CD25-4F64-8590-6F672A5B9F40}
 		{DD8C5B62-D55B-4E43-8407-2BAF1358BBE6} = {40743BAE-CD25-4F64-8590-6F672A5B9F40}
 		{88CC628A-4100-4E34-A202-144FE4223556} = {40743BAE-CD25-4F64-8590-6F672A5B9F40}
+		{F6176BD0-C658-4780-8057-E476CF8F80E9} = {42EA380C-2315-4301-8DD0-F0872D33A8FB}
 	EndGlobalSection
 EndGlobal
