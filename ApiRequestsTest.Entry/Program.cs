@@ -29,13 +29,13 @@ builder.ConfigureServices((hostContext, services) =>
         })
         .AddPolicyHandler(ConsignmentRetryPolicy.GetRetryPolicy());
     services.AddScoped<IPackageAggregator, PackageAggregator>();
-    services.AddScoped<Application>();
+    services.AddScoped<IApplication, Application>();
 });
 var host = builder.Build();
 
 using var serviceScope = host.Services.CreateScope();
 var provider = serviceScope.ServiceProvider;
-var app = provider.GetRequiredService<Application>();
+var app = provider.GetRequiredService<IApplication>();
 Console.WriteLine("Press any key to find best consignment deal!");
 Console.ReadKey();
 var input = new ConsignmentInput

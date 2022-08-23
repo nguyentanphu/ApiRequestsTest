@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace ApiRequestsTest.Application;
 
-public class Application
+public class Application: IApplication
 {
     private readonly IPackageAggregator _packageAggregator;
 

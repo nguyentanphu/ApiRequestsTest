@@ -7,13 +7,6 @@ namespace ApiRequestsTest.Application.Tests;
 
 public class PackageAggregatorTests
 {
-    private readonly Mock<IEnumerable<IPackageProvider>> _packageProvidersMock;
-
-    public PackageAggregatorTests()
-    {
-        _packageProvidersMock = new Mock<IEnumerable<IPackageProvider>>();
-    }
-
     [Fact]
     public async Task SelectBestPrice_AllProvidersFailed()
     {
