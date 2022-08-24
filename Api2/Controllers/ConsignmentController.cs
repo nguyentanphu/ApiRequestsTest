@@ -6,9 +6,15 @@ namespace Api1.Controllers;
 [Route("api/consignments")]
 public class ConsignmentController: ControllerBase
 {
+    private readonly ILogger<ConsignmentController> _logger;
+
+    public ConsignmentController(ILogger<ConsignmentController> logger)
+    {
+        _logger = logger;
+    }
     public async Task<IActionResult> Index(Consignment consignment)
     {
-        Console.WriteLine($"Requesting consignee: {consignment.Consignee}, consignor: {consignment.Consignor}");
+        _logger.LogInformation($"Requesting consignee: {consignment.Consignee}, consignor: {consignment.Consignor}");
         
         var random = new Random();
         var randomDelay = random.Next(1, 6);
