@@ -3,6 +3,8 @@ http://localhost:1111/api/consignments
 http://localhost:2222/api/consignments
 http://localhost:3333/api/consignments
 
+All Apis have random delays from 1-5 secs and about 20% chance of throwing 500 error to mimic real world scenarios.
+
 ## How to run:
 Please start 3 web apis (Api1, Api2, Api3 projects) first and the ApiRequestsTest.Entry and then press any key to run the request
 If you're using rider (probably applicable for Visual Studio), there's a Run all profile that you can just hit run.
